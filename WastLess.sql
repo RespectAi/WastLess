@@ -3,7 +3,7 @@ USE  wasteless;
 
 -- 1) USERS
 CREATE TABLE users (
-  user_id        SERIAL PRIMARY KEY,
+  user_id        INT AUTO_INCREMENT PRIMARY KEY,
   email          VARCHAR(255) UNIQUE NOT NULL,
   password_hash  VARCHAR(255) NOT NULL,
   name           VARCHAR(100),
@@ -12,7 +12,7 @@ CREATE TABLE users (
 
 -- 2) FRIDGES
 CREATE TABLE fridges (
-  fridge_id      SERIAL PRIMARY KEY,
+  fridge_id      INT AUTO_INCREMENT PRIMARY KEY,
   name           VARCHAR(100) NOT NULL,
   location_desc  TEXT,
   created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -28,7 +28,7 @@ CREATE TABLE fridge_users (
 
 -- 4) PRODUCTS (catalog of known foods)
 CREATE TABLE products (
-  product_id           SERIAL PRIMARY KEY,
+  product_id           INT AUTO_INCREMENT PRIMARY KEY,
   name                 VARCHAR(255) NOT NULL,
   category             VARCHAR(100),
   default_shelf_life   INT NOT NULL,  -- e.g. '14 days'
@@ -45,7 +45,7 @@ CREATE TABLE qr_codes (
 
 -- 6) FRIDGE ITEMS (instances in a fridge)
 CREATE TABLE fridge_items (
-  item_id            SERIAL PRIMARY KEY,
+  item_id            INT AUTO_INCREMENT PRIMARY KEY,
   fridge_id          INTEGER NOT NULL REFERENCES fridges(fridge_id) ON DELETE CASCADE,
   added_by           INTEGER NOT NULL REFERENCES users(user_id),
   qr_code            VARCHAR(100) NOT NULL REFERENCES qr_codes(qr_code),
@@ -67,7 +67,7 @@ CREATE TABLE fridge_items (
 
 -- 7) NOTIFICATIONS
 CREATE TABLE notifications (
-  note_id            SERIAL PRIMARY KEY,
+  note_id            INT AUTO_INCREMENT PRIMARY KEY,
   item_id            INTEGER NOT NULL REFERENCES fridge_items(item_id) ON DELETE CASCADE,
   user_id            INTEGER NOT NULL REFERENCES users(user_id),
   notified_at        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
