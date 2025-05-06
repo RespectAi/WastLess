@@ -75,4 +75,4 @@ root/
 ##
 
 ## Schema Diagram 
-![WasteLess](images\WastLessio.jpg)
+![WasteLessio](images\WastLessio.jpg)

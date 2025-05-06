@@ -7,7 +7,7 @@ DATABASE_URL = "mysql+pymysql://root:Abiodun001@localhost/wasteless"
 # 2. Create the SQLAlchemy Engine
 engine = create_engine(
     DATABASE_URL,
-    echo=True,               # Log SQL to the console (helpful while developing)
+    echo=True,               # Log SQL to the console 
     pool_pre_ping=True       # Re-check connections, avoids “stale” errors
 )
 
